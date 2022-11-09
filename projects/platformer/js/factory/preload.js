@@ -9,9 +9,9 @@
         game.load.image('projectile', './asset/projectile.png');
         game.load.image('platform', './asset/platform.png');
         game.load.image('db', './asset/collectable/database.png');
-        game.load.image('steve', './asset/collectable/steve-head.png');
-        game.load.image('grace', './asset/collectable/grace-head.png');
-        game.load.image('kennedi', './asset/collectable/kennedi-head.png');
+        game.load.image('brees', './asset/collectable/brees.png');
+        game.load.image('grace', './asset/collectable/james.png');
+        game.load.image('curry', './asset/collectable/curry.png');
         game.load.image('max', './asset/collectable/max-head.png');
         game.load.atlas('halle', './asset/halle/phaser-json-array/halle.png', './asset/halle/phaser-json-array/halle.json');
     };

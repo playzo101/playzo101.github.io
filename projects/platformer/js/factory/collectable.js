@@ -19,10 +19,14 @@
                 case 'db':
                     collectable.body.height = 44;
                     break;
-                    
+                 
+                    case 'brees':
+                        collectable.scale.x = collectable.scale.y = 0.05;
+                        break;
+
                 case 'grace':
-                case 'kennedi':
-                    collectable.scale.x = collectable.scale.y = 0.9;
+                case 'curry':
+                    collectable.scale.x = collectable.scale.y = 0.22;
                     break;
                 
                 default:
