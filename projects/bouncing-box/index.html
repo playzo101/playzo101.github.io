@@ -39,6 +39,7 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+			var boardHeight = board.height();
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
@@ -48,7 +49,7 @@
 
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX, newPositionY = 0) {
-				// box.css("left", newPositionX);
+				box.css("left", newPositionX);
 				box.css("top", newPositionY);
 			}
 			
@@ -64,7 +65,8 @@
 			// TODO 2 - Variable declarations 
 			var positionX = 0
 			var positionY = 0
-			var speed = 3
+			var speedX = 3
+			var speedY = 3
 			var points = 0
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -74,21 +76,21 @@
 			function update() {
 				// we want to increase the value of positionX by 10
 				// once the box positionX gets to 1,500 we want to make the speed negative
-				// if (positionX >= 1500) {
-				// 	speed = -Math.abs(speed)
-				// }
-				// if (positionX <= 0){
-				// 		speed = Math.abs(speed)
-				// 	}
-				if (positionY >= 900) {
-					speed = -Math.abs(speed)
+				if (positionX >= boardWidth) {
+					speedX = -Math.abs(speedX)
+				}
+				if (positionX <= 0){
+						speedX = Math.abs(speedX)
+					}
+				if (positionY >= boardHeight) {
+					speedY = -Math.abs(speedY)
 				}
 				if (positionY <= 0){
-						speed = Math.abs(speed)
+						speedY = Math.abs(speedY)
 					}
 
-				// positionX = positionX + speed;
-				positionY = positionY + speed
+				positionX = positionX + speedX;
+				positionY = positionY + speedY;
 
 				moveBoxTo(positionX, positionY);
 			};
@@ -101,7 +103,8 @@
 			function handleBoxClick() {
 				positionX = 0;
 				// your code increase the points variable by 1
-				speed = 2 * speed
+				speedX = 1.5 * speedX
+				speedY = 1.5 * speedY
 				points = points + 10;
 				changeBoxText(points);
 			};
