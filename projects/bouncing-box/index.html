@@ -14,7 +14,7 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			/* left: 0px;  <--- Change me! */
 		}
 		.board{
 			height: 100vh;
@@ -47,10 +47,11 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
+			function moveBoxTo(newPositionX, newPositionY = 0) {
+				// box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
-
+			
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
@@ -61,17 +62,35 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
-			
+			var positionX = 0
+			var positionY = 0
+			var speed = 3
+			var points = 0
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				
+				// we want to increase the value of positionX by 10
+				// once the box positionX gets to 1,500 we want to make the speed negative
+				// if (positionX >= 1500) {
+				// 	speed = -Math.abs(speed)
+				// }
+				// if (positionX <= 0){
+				// 		speed = Math.abs(speed)
+				// 	}
+				if (positionY >= 900) {
+					speed = -Math.abs(speed)
+				}
+				if (positionY <= 0){
+						speed = Math.abs(speed)
+					}
 
+				// positionX = positionX + speed;
+				positionY = positionY + speed
+
+				moveBoxTo(positionX, positionY);
 			};
 
 			/* 
@@ -80,9 +99,11 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
-
+				positionX = 0;
+				// your code increase the points variable by 1
+				speed = 2 * speed
+				points = points + 10;
+				changeBoxText(points);
 			};
 		})();
 	</script>
